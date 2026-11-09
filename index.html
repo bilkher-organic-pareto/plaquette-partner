@@ -113,9 +113,10 @@ html,body{margin:0;background:#e9e6df}
 (function(){
   function fit(){
     document.querySelectorAll('.sheet').forEach(function(s){
-      var k = Math.min(1, s.clientWidth / 794);
+      var w = +s.getAttribute('data-w') || 794, h = +s.getAttribute('data-h') || 1123;
+      var k = Math.min(1, s.clientWidth / w);
       s.firstElementChild.style.transform = 'scale(' + k + ')';
-      s.style.height = (1123 * k) + 'px';
+      s.style.height = (h * k) + 'px';
     });
   }
   window.addEventListener('resize', fit);
